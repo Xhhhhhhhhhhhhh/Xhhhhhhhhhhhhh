@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<h1>hello {{name}}</h1>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip=false
+			//el的两种写法
+			// let a=new Vue({
+			// 	//el:'#box',
+			// 	data:{
+			// 		name:'xh36'
+			// 	}
+			// })
+			// console.log(a)
+			// a.$mount('#box')
+			//data的两种写法
+			new Vue({
+				el:'#box',
+				//data对象式
+				// data:{
+				// 	name:'xh36'
+				// },
+				//data函数式
+				data:function(){
+					console.log(this)//this当前Vue,但是箭头函数没有自己的this
+					return{
+						name:'xh36'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -7,8 +7,22 @@
 		</script>
 	</head>
 	<body>
+		<!-- 准备容器 -->
+		<div id="box">
+			<h1>hello {{name}}</h1><!--插值语法-->
+			<h1>age:{{age}}</h1>
+		</div>
 		<script type="text/javascript">
 			Vue.config.productionTip=false//阻止vue启动时开发者提示
+			new Vue({//创建Vue实例,只能是一对一关系
+				el:'#box',//el用于指定当前Vue实例为哪个容器服务,值通常为css选择器字符串
+				//el:document.getElementById('box')
+				data:{//data中用于储存数据,提供el去使用,值暂时使用一个对象
+					name:'xh36',
+					age:'18'
+				}
+			})
+			
 		</script>
 	</body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<h1>学校名:{{schoolName}}</h1><!--View-->
+			<h2>学校地址:{{schoolAdd}}</h2>
+			<h1>测试:{{$options}}</h1>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip=false
+			let vm=new Vue({//ViewModel
+				el:'#box',
+				data:{
+					schoolName:'宜职',//Model
+					schoolAdd:'宜春'
+				}
+			})
+			console.log(vm)
+		</script>
+	</body>
+</html>
