@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 通过一个对象给另一个对象中的属性的操作,为数据代理(i/o) -->
+	</head>
+	<body>
+		<script type="text/javascript">
+			let num1={
+				x:100
+			}
+			let num2={
+				y:200
+			}
+			Object.defineProperty(num2,'x',{
+				get:function(){
+					return num1.x
+				},
+				set:function(val){
+					num1.x=val
+				}
+			})
+		</script>
+	</body>
+</html>
