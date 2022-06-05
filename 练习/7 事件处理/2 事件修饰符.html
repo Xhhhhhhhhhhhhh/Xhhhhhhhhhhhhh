@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../../vue.js/vue.js" type="text/javascript">
+		</script>
+		<style type="text/css">
+		*{
+			margin: 20px;
+		}
+			#box2{height: 50px;background-color: blue;}
+			#box3{margin: 10px;background-color: red;height: 60px;}
+			#box4{margin: 10px;background-color: orange;height: 30px;}
+			#list{width: 200px;height: 200px;background-color: #0000FF;overflow: auto;}
+			li{height: 100px;}
+		</style>
+	</head>
+	<body>
+		<!-- 
+				Vue中的事件修饰符：
+						1.prevent：阻止默认事件（常用）；
+						2.stop：阻止事件冒泡（常用）；
+						3.once：事件只触发一次（常用）；
+						4.capture：使用事件的捕获模式；
+						5.self：只有event.target是当前操作的元素时才触发事件；
+						6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕；
+		-->
+		<div id="box">
+			<h1>welcome {{name}}</h1>
+			<!-- 阻止默认事件 -->
+			<a href="https://www.baidu.com" @click.prevent="Info">百度</a>
+			<!-- 阻止冒泡事件 -->
+			<div id="box2" @click="Info">
+				<button type="button" @click.stop="Info">点击</button>
+			</div>
+			<!-- 事件只触发一次 -->
+			<button type="button" @click.once="Info">点击</button>
+			<!-- 使用事件的捕获模式 -->
+			<div id="box3" @click.capture="Msg('box3')">
+				box1
+				<div id="box4" @click="Msg('box4')">
+					box2
+				</div>
+			</div>
+			<!-- 只有event.target是当前操作的元素时才触发事件 -->
+			<div id="box2" @click.self="Info">
+				<button type="button" @click="Info">点击</button>
+			</div>
+			<!-- 事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+			<ul id="list" @wheel.passive="Scr"> <!-- @scroll滚动条的滚动,@wheel鼠标滚轮的滚动 -->
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip=false
+			let vm=new Vue({
+				el:'#box',
+				data:{
+					name:'xh36'
+				},
+				methods:{
+					Info:function(e){
+						alert('准备进入网站')
+						console.log(e.target)
+						//e.preventDefault()//阻止默认行为
+					},
+					Msg:function(inx){
+						console.log(inx)
+					},
+					Scr:function(){
+						for(let i=0;i<100000;i++){
+							console.log(i)
+						}
+						console.log('endl')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
