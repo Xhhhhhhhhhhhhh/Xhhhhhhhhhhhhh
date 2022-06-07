@@ -32,7 +32,8 @@
 			<a href="https://www.baidu.com" @click.prevent="Info">百度</a>
 			<!-- 阻止冒泡事件 -->
 			<div id="box2" @click="Info">
-				<button type="button" @click.stop="Info">点击</button>
+				<!-- <button type="button" @click.stop="Info">点击</button> -->
+				<a href="https://www.baidu.com" @click.stop.prevent="Info">百度</a><!-- 修饰符可以连续 -->
 			</div>
 			<!-- 事件只触发一次 -->
 			<button type="button" @click.once="Info">点击</button>
