@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../../vue.js/vue.js" type="text/javascript">
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			姓:<input type="text" id="" v-model="finst" /><br>
+			名:<input type="text" id="" v-model="last" /><br>
+			姓名为:<span>{{name}}</span>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip=false
+			let vm=new Vue({
+				el:'#box',
+				data:{
+					finst:'张',
+					last:'三',
+					name:''
+				},
+				watch:{
+					finst:{
+						immediate:true,//提前计算
+						handler:function(New,Old){
+							setTimeout(()=>{//必须是箭头函数,箭头往外找this是vm;否则this指向的是Windows
+								this.name=New+'-'+this.last
+							},1000)
+						}
+					},
+					last:{
+						immediate:true,
+						handler:function(New,Old){
+							this.name=this.finst+'-'+New
+						}
+					},
+					// finst:function(New){
+					// 	setTimeout(function(){
+					// 		this.name=New+'-'+this.last
+					// 	},1000)
+					// },
+					// last:function(New){
+					// 	this.name=this.finst+'-'+New
+					// }
+				}
+			})
+		</script>
+	</body>
+</html>
