@@ -4,13 +4,30 @@
 		<meta charset="utf-8">
 		<title></title>
 		<script src="vue.js" type="text/javascript"></script>
+		<style>
+			li{border: 1px solid black;}
+		</style>
 	</head>
 	<body>
 		<div id="app">
-			{{ma}}{{ccc}}<!-- 申明变量 -->
+			<ul>
+				<li v-for="(b,index) in biao">{{b.text}}</li>
+			</ul>
+			
 		</div>
 		<script type="text/javascript">
-			var app=new Vue({el:'#app',data:{ma:'he',ccc:'vue'}})//el是对象,data保存数据{变量赋值}
+			Vue.config.productionTip=false
+			var app=new Vue({
+				el:'#app',
+				data:{
+					biao:[
+						{text:'xh36'},
+						{text:'xh37'},
+						{text:'xh3'},
+						{text:'xh'},
+					]
+				}
+			})
 		</script>
 	</body>
 </html>
