@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.del{
+				color:green;
+			}
+			#app{text-align: center;position: relative;width: 100%;margin-left: auto;}
+			li{border: 1px solid black;width: 100px;list-style: none;}
+			ul{float: left;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<ul class="id">
+				<li>序号</li>
+				<li v-for="(id,index) in Id">{{id.text}}</li>
+			</ul>
+			<ul class="name">
+				<li>姓名</li>
+				<li v-for="(name,index) in Name" >{{name.text}}</li>
+			</ul>
+			<ul class="id">
+				<li>学号</li>
+				<li v-for="(id,index) in Id">{{id.text}}</li>
+			</ul>
+			<ul class="class">
+				<li>班级</li>
+				<li v-for="(c,index) in Class">{{c.text}}</li>
+			</ul>
+			<ul class="api">
+				<li>操作</li>
+				<li v-for="(api,index) in Api" :class="Mod" @click="Del(index)">{{api.text}}</li><!-- 获取index -->
+			</ul>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip=false
+			var app=new Vue({
+				el:'#app',
+				data:{
+					Id:[
+						{text:'1'},
+						{text:'2'},
+						{text:'3'},
+						{text:'4'},
+						{text:'5'},
+						{text:'6'},
+						{text:'7'},
+						{text:'8'},
+						{text:'9'},
+						{text:'10'},
+					],
+					Name:[
+						{text:'汤宏飚'},
+						{text:'辛怡炜'},
+						{text:'颜义韩'},
+						{text:'彭昌熨'},
+						{text:'刘佳星'},
+						{text:'张金毫'},
+						{text:'袁家成'},
+						{text:'冯文杰'},
+						{text:'王一臣'},
+						{text:'肖洋韬'},
+					],
+					Class:[
+						{text:'19高计应'},
+						{text:'19高计应'},
+						{text:'19高计应'},
+						{text:'19高计应'},
+						{text:'19高计应'},
+						{text:'19高计应'},
+						{text:'19高计应'},
+						{text:'19高计应'},
+						{text:'19高计应'},
+						{text:'19高计应'},
+					],
+					Api:[
+						{text:'删除'},
+						{text:'删除'},
+						{text:'删除'},
+						{text:'删除'},
+						{text:'删除'},
+						{text:'删除'},
+						{text:'删除'},
+						{text:'删除'},
+						{text:'删除'},
+						{text:'删除'},
+					],
+					Mod:'del'
+				},
+				methods:{
+					Del:function(inx){
+						//console.log(this.Id[inx])
+						this.Id.splice(inx,1)//删除
+						this.Name.splice(inx,1)
+						this.Class.splice(inx,1)
+						this.Api.splice(inx,1)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
