@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../../vue.js/vue.js" type="text/javascript">
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<!-- v-show条件渲染 -->
+			<h1 v-show="show">hello {{name}}</h1>
+			<!-- v-if条件渲染 -->
+			<h1 v-if="show">hello {{name}}</h1>
+			<h1 v-if="num<10">{{num}}</h1>
+			<button @click="num++">++</button>
+			<h2 v-if='num==1'>num==1</h2>
+			<!-- else-if效率高一点 -->
+			<h3 v-else-if='num==2'>num==2</h3>
+			<h4 v-else-if='num==3'>num==3</h4>
+			<h5 v-else-if='num==4'>num==4</h5>
+			<h6 v-else-if='num==5'>num==5</h6>
+			<h5 v-else-if='num==6'>num==6</h5>
+			<h4 v-else-if='num==7'>num==7</h5>
+			<h3 v-else-if='num==8'>num==8</h5>
+			<h2 v-else-if='num==9'>num==9</h5>
+			<!-- else与if要连接 -->
+			<h1 v-else>0</h1>
+			<!-- 模板template(不会破坏css)不能与show一起使用 -->
+			<template v-if='num==2'>
+				<h1 v-if='num==2'>hello</h2>
+				<h1 v-if='num==2'>xh36</h2>
+			</template>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip=false
+			let vm=new Vue({
+				el:'#box',
+				data:{
+					name:'xh36',
+					show:true,
+					num:0
+				},
+				watch: {
+					num(newValue) {
+						if(newValue==10){
+							this.num=0
+						}
+					}
+				},
+			})
+		</script>
+	</body>
+</html>
