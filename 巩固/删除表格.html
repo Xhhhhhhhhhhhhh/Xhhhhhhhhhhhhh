@@ -10,7 +10,7 @@
 				padding: 0;
 			}
 			.del{
-				color:green;
+				color:red;
 			}
 			#app{text-align: center;position: relative;width: 100%;margin-left: auto;}
 			li{border: 1px solid black;width: 100px;list-style: none;}
@@ -19,25 +19,17 @@
 	</head>
 	<body>
 		<div id="app">
-			<ul class="id">
-				<li>序号</li>
-				<li v-for="(id,index) in Id">{{id.text}}</li>
+			<ul>
+				<li v-for="(per,index) in pers" :key="per.id">{{per.id}}</li>
 			</ul>
-			<ul class="name">
-				<li>姓名</li>
-				<li v-for="(name,index) in Name" >{{name.text}}</li>
+			<ul >
+				<li v-for="(per,index) in pers" :key="per.name">{{per.name}}</li>
 			</ul>
-			<ul class="id">
-				<li>学号</li>
-				<li v-for="(id,index) in Id">{{id.text}}</li>
+			<ul >
+				<li v-for="(per,index) in pers" :key="index">{{per.class}}</li>
 			</ul>
-			<ul class="class">
-				<li>班级</li>
-				<li v-for="(c,index) in Class">{{c.text}}</li>
-			</ul>
-			<ul class="api">
-				<li>操作</li>
-				<li v-for="(api,index) in Api" :class="Mod" @click="Del(index)">{{api.text}}</li><!-- 获取index -->
+			<ul class=".del">
+				<li v-for="(per,index) in pers" @click="Del(index)" :key="index">{{per.api}}</li>
 			</ul>
 		</div>
 		<script type="text/javascript">
@@ -45,63 +37,28 @@
 			var app=new Vue({
 				el:'#app',
 				data:{
-					Id:[
-						{text:'1'},
-						{text:'2'},
-						{text:'3'},
-						{text:'4'},
-						{text:'5'},
-						{text:'6'},
-						{text:'7'},
-						{text:'8'},
-						{text:'9'},
-						{text:'10'},
-					],
-					Name:[
-						{text:'汤宏飚'},
-						{text:'辛怡炜'},
-						{text:'颜义韩'},
-						{text:'彭昌熨'},
-						{text:'刘佳星'},
-						{text:'张金毫'},
-						{text:'袁家成'},
-						{text:'冯文杰'},
-						{text:'王一臣'},
-						{text:'肖洋韬'},
-					],
-					Class:[
-						{text:'19高计应'},
-						{text:'19高计应'},
-						{text:'19高计应'},
-						{text:'19高计应'},
-						{text:'19高计应'},
-						{text:'19高计应'},
-						{text:'19高计应'},
-						{text:'19高计应'},
-						{text:'19高计应'},
-						{text:'19高计应'},
-					],
-					Api:[
-						{text:'删除'},
-						{text:'删除'},
-						{text:'删除'},
-						{text:'删除'},
-						{text:'删除'},
-						{text:'删除'},
-						{text:'删除'},
-						{text:'删除'},
-						{text:'删除'},
-						{text:'删除'},
+					pers:[
+						{id:'1',name:'汤宏飚',class:'19高计应',api:'删除'},
+						{id:'2',name:'辛怡炜',class:'19高计应',api:'删除'},
+						{id:'3',name:'颜义韩',class:'19高计应',api:'删除'},
+						{id:'4',name:'彭昌熨',class:'19高计应',api:'删除'},
+						{id:'5',name:'刘佳星',class:'19高计应',api:'删除'},
+						{id:'6',name:'张金毫',class:'19高计应',api:'删除'},
+						{id:'7',name:'袁家成',class:'19高计应',api:'删除'},
+						{id:'8',name:'冯文杰',class:'19高计应',api:'删除'},
+						{id:'9',name:'王一臣',class:'19高计应',api:'删除'},
+						{id:'10',name:'肖洋韬',class:'19高计应',api:'删除'},
 					],
 					Mod:'del'
 				},
 				methods:{
 					Del:function(inx){
-						//console.log(this.Id[inx])
-						this.Id.splice(inx,1)//删除
-						this.Name.splice(inx,1)
-						this.Class.splice(inx,1)
-						this.Api.splice(inx,1)
+						//console.log(this.pers)
+						if(this.pers.length>1){
+							this.pers.splice(inx,1)//删除
+						}else{
+							alert('只剩最后一个了')
+						}
 					}
 				}
 			})
