@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="/vue.js/vue.js"></script>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        
+        <ul>
+            <!-- 遍历对象 -->
+            <li v-for="(val,key) in Top" :key="key">{{val}}-{{key}}</li>
+            <!-- 遍历数组 -->
+            <li v-for="(per,inx) in pers" :key="per.id">{{per.id}}-{{per.name}}-{{per.age}}</li>
+            <!-- 遍历字符串 -->
+            <li v-for="(char,inx) in str" :key="char">{{char}}-{{inx}}</li>
+            <!-- 遍历指定次数 -->
+            <h1>遍历指定次数</h1>
+            <li v-for="(num,inx) in 5">{{num}}-{{inx}}</li>
+            
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                Top:{
+                    i:'id',
+                    name:'name',
+                    age:'age'
+                },
+                pers:[
+                    {id:'1',name:'xh36',age:'18'},
+                    {id:'2',name:'xh36',age:'17'},
+                    {id:'3',name:'xh36',age:'19'},
+                ],
+                str:'word'
+            }
+        })
+    </script>
+</body>
+</html>
