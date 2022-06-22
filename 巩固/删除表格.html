@@ -29,7 +29,7 @@
 				<li v-for="(per,index) in pers" :key="index">{{per.class}}</li>
 			</ul>
 			<ul class=".del">
-				<li v-for="(per,index) in pers" @click="Del(index)" :key="index">{{per.api}}</li>
+				<li v-for="(per,index) in pers" @click="Del(index)" :key="index" :class="Mod">{{per.api}}</li>
 			</ul>
 		</div>
 		<script type="text/javascript">
