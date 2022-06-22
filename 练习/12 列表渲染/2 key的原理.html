@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="/vue.js/vue.js"></script>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <!-- 不写key Vue自动生成的key="index" -->
+            <li v-for="(per,inx) in pers" :key="per.id">{{per.id}}-{{per.name}}-{{per.age}}<input type="text"></li>
+        </ul>
+        <button @click.once="push">添加</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                pers:[
+                    {id:'01',name:'xh36',age:'18'},
+                    {id:'02',name:'xh36',age:'17'},
+                    {id:'03',name:'xh36',age:'19'},
+                ],
+            },
+            methods: {
+              push:function(){
+                let p={id:'04',name:'xh36',age:'20'}
+                this.pers.unshift(p)
+              }  
+            },
+        })
+    </script>
+</body>
+</html>
