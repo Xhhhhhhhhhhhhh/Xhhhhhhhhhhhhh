@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="/vue.js/vue.js"></script>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <input type="text" placeholder="请输入名字过滤项" v-model="inpt">
+            <li v-for="(per,inx) in filpers" :key="per.id">{{per.name}}-{{per.age}}-{{per.sex}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                pers:[
+                    {id:'01',name:'马冬梅',age:'18',sex:'女'},
+                    {id:'02',name:'周冬雨',age:'17',sex:'女'},
+                    {id:'03',name:'周杰伦',age:'19',sex:'男'},
+                    {id:'04',name:'温兆伦',age:'19',sex:'男'},
+                ],
+                inpt:'',
+            },
+            watch:{
+                inpt:{
+                    immediate:true,
+                    handler:function(newval){
+                        this.filpers=this.pers.filter(function(p){
+                        return p.name.indexOf(newval)!=-1
+                    })
+                    }
+                },
+                // inpt:function(newval){
+                //     //console.log(this.pers)
+                //     // for(let i=0;i<this.pers.length;i++){
+                //     //     //console.log(this.pers[i].name.indexOf(newval)!=-1)
+                //     //     if(this.pers[i].name.indexOf(newval)==-1){
+                //     //         this.pers.splice(i,1)
+                //     //     }
+                //     // }
+                //     this.filpers=this.pers.filter(function(p){
+                //         return p.name.indexOf(newval)!=-1
+                //     })
+                // }
+            },
+            // computed:{
+            //     filpers:function(){
+            //         return this.pers.filter(function(p){
+            //             console.log(p.name.indexOf(this.inpt)!=-1)
+            //             return p.name.indexOf(this.inpt)!=-1
+            //         })
+            //     }
+            // }
+        })
+    </script>
+</body>
+</html>
