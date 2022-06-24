@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="/vue.js/vue.js"></script>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="(per,inx) in pers" :key="per.id">{{per.name}}-{{per.age}}-{{per.sex}}
+            </li>
+        </ul>
+        <button @click="updatama">更新马冬梅</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                pers:[
+                    {id:'01',name:'马冬梅',age:'18',sex:'女'},
+                    {id:'02',name:'周冬雨',age:'17',sex:'女'},
+                    {id:'03',name:'周杰伦',age:'19',sex:'男'},
+                    {id:'04',name:'温兆伦',age:'19',sex:'男'},
+                ],
+            },
+            methods:{
+                updatama:function(){
+                    // this.pers[0].name='马老师'//true
+                    // this.pers[0].age='37'//true
+                    // this.pers[0].sex='男'//true
+                    this.pers[0]={//false
+                        id:'01',
+                        name:'马老师',
+                        age:'37',
+                        sex:'男'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

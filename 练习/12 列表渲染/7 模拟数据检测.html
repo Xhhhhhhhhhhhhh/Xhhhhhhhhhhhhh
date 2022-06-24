@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let data={
+            a:1,
+            b:2,
+            c:3
+        }
+        // data.a=2
+        // let time=setInterval(()=>{
+        //     if(data.a!=2){
+        //         console.log('ck')
+        //         clearInterval(time)
+        //     }
+        // },10)
+        // Object.defineProperty(data,'a',{
+        //     get:function(){
+        //         return data.a
+        //     },
+        //     set:function(val){
+        //         data.a=val
+        //     }
+        // })
+        let obs=new Observer(data)//创建一个监视的实例对象，用于监视data中属性的变化
+        function Observer(obj){
+            let key=Object.keys(obj)
+            key.forEach((k)=>{
+                Object.defineProperty(this,k,{
+                    get:function(){
+                        return obj[k]
+                    },
+                    set:function(val){
+                        obj[k]=val
+                    }
+                })
+                //console.log(this,k)
+            })
+        }
+        console.log(obs)
+        let vm={}
+        vm._data=obs
+        console.log(vm)
+    </script>
+</body>
+</html>

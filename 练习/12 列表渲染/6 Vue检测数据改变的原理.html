@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="/vue.js/vue.js"></script>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h1>学校名称:{{schoolName}}</h1>
+		<h1>学校地址:{{schoolAddr}}</h1>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        let vm=new Vue({
+			el:'#box',
+			data:{
+				schoolName:'宜春学院',
+				schoolAddr:'宜春'
+			}
+		})
+    </script>
+</body>
+</html>
